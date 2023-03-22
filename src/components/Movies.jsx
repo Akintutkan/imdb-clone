@@ -64,22 +64,21 @@
           ))}
         </ul>
         <input type="text" onChange={handleSearchChange} />
-        <ul>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 px-4 md:px-0 gap-4">
           {filteredMovies.map((movie) => (
-            <li key={movie.id}>
-            <img src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`} alt={movie.title} />
-              <h3>{movie.title}</h3>
-              <p>{movie.release_date}</p>
-              <p>IMDB: {movie.vote_average}</p>
-        <button onClick={() => handleAddFavorite(movie)}>
-          Add to favorites
-        </button>
-        <button onClick={() => handleAddToRecentlyViewed(movie)}>
-          Add to recently viewed
-        </button>
-      </li>
+            <div className="bg-white p-14 rounded-lg shadow-sm flex flex-col items-center text-center" key={movie.id}>
+            <img className="w-[100px] h-[150px] mb-6" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`} alt={movie.title} />
+              <h3 className="font-semibold text-lg text-black" >{movie.title}</h3>
+              <p className="mt-2 text-sm text-gray-700">{movie.release_date}</p>
+              <p className="mt-2 text-sm text-gray-700">IMDB: {movie.vote_average}</p>
+              <div >
+        <button className="px-" onClick={() => handleAddFavorite(movie)}>Add to favorites</button>
+        <button className="px-2" onClick={() => handleAddToRecentlyViewed(movie)}>Add to recently viewed</button>
+        </div>
+      </div>
     ))}
-  </ul>
+ 
+  </div>
 </div>
 );
 };
