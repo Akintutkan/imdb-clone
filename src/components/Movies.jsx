@@ -28,31 +28,45 @@
     const saveToLocalStorage = (key, value) => {
         localStorage.setItem(key, JSON.stringify(value));
       };
-      const removeToLocalStorage = (key, value) => {
-        localStorage.removeItem(key, JSON.stringify(value));
+      const removeFromLocalStorage = (key) => {
+        localStorage.removeItem(key);
       };
   
     const handleSearchChange = (event) => {
       setSearchTerm(event.target.value);
     };
-  
+  //Favori Alanının Fonksiyonları
     const handleAddFavorite = (movie) => {
+      const isAlreadyFavorite = favorites.some((fav) => fav.id === movie.id);
+      if (isAlreadyFavorite) {
+        alert("This movie is already in your favorites!");
+        return;
+      }
       const newFavorites = [...favorites, movie];
       setFavorites(newFavorites,);
       saveToLocalStorage("favorites", newFavorites);
     };
 
     const handleRemoveFavorite = (movie) => {
-      setFavorites((newFavorites) =>
-        newFavorites.filter((fav) => fav.id !== movie.id)
-      );
-    }; 
-
+      const updatedFavorites = favorites.filter((fav) => fav.id !== movie.id);
+      setFavorites(updatedFavorites);
+      removeFromLocalStorage("favorites");
+    };
+//son izlenenlerin Fonksiyonları
+   
     const handleAddToRecentlyViewed = (movie) => {
+      const isAlreadyRecentlyViewed = recentlyViewed.some(
+        (viewed) => viewed.id === movie.id
+      );
+      if (isAlreadyRecentlyViewed) {
+        alert("This movie is already in your recently viewed list!");
+        return;
+      }
       const newRecentlyViewed = [movie, ...recentlyViewed.slice(0, 4)];
       setRecentlyViewed(newRecentlyViewed);
       saveToLocalStorage("recentlyViewed", newRecentlyViewed);
     };
+
   //Filtreleme alanı
     const filteredMovies = movies.filter((movie) =>
       movie.title.toLowerCase().includes(searchTerm.toLowerCase())
