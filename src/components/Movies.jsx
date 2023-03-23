@@ -10,7 +10,7 @@
     const [recentlyViewed, setRecentlyViewed] = useState(
       JSON.parse(localStorage.getItem("recentlyViewed")) || []
     );
-    
+    const [filterMovies, setFilterMovies] = useState([]);
   
     useEffect(() => {
       const fetchData = async () => {
@@ -20,6 +20,7 @@
         console.log(result)
   
         setMovies(result.data.results);
+        setFilterMovies(result.data.results);
       };
   
       fetchData();
@@ -71,6 +72,23 @@
     const filteredMovies = movies.filter((movie) =>
       movie.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    function handleFilterChange(event) {
+      const { name, value } = event.target;
+      let filteredMovies = movies;
+      if (name === "year" && value !== "") {
+        filteredMovies = movies.filter(
+          (movie) => movie.release_date && movie.release_date.substring(0, 4) === value
+        );
+      } else if (name === "genre" && value !== "") {
+        filteredMovies = movies.filter(
+          (movie) => movie.genre_ids && movie.genre_ids.includes(Number(value))
+        );
+      }
+      setFilterMovies(filteredMovies);
+    }
+
+
   
     return (
       <div className="">
@@ -98,12 +116,12 @@
        </form>
         </div>
         <h1 className="flex font-bold text-2xl justify-center py-2">Movies</h1>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 px-4 pt-4 md:px-0 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 pt-4 md:px-4 gap-4">
           {filteredMovies.map((movie) => (
             <div className="bg-white p-16 rounded-lg shadow-xl flex flex-col items-center text-center" key={movie.id}>
             <img className="w-[100px] h-[150px] mb-6" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`} alt={movie.title} />
               <h3 className="font-semibold text-lg text-black" >{movie.title}</h3>
-              <p className="mt-2 text-sm text-gray-700">{movie.release_date}</p>
+              <p className="mt-2 text-lg text-gray-700">{movie.release_date}</p>
               <p className="mt-2 text-sm text-gray-700">IMDB: {movie.vote_average}</p>
               <div >
         <button className="px-2" 

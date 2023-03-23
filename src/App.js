@@ -8,7 +8,7 @@ function App() {
   return (
     
      <Router>
-      <div className="container mx-auto grid gap-y-6 pt-8"> 
+      <div className="bg-gray-300 container mx-auto grid gap-y-6 pt-8"> 
        <Header/>
         <Routes>
           <Route exact path="/" element={<Movies/>} /> 
