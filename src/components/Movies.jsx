@@ -10,7 +10,7 @@
     const [recentlyViewed, setRecentlyViewed] = useState(
       JSON.parse(localStorage.getItem("recentlyViewed")) || []
     );
-    const [isFavorite, setIsFavorite] = useState((false));
+    
   
     useEffect(() => {
       const fetchData = async () => {
@@ -76,7 +76,7 @@
       <div className="">
        <div className="">
        <form className="grid md:grid-cols-2 lg:grid-cols-5 px-4 md:px-20 gap-20">
-        <p className="flex pl-10 justify-center">Arama alanı: </p> <input className="border-solid rounded-lg border-4"type="text" onChange={handleSearchChange} />
+        <p className="flex pl-10 justify-center">Search Bar: </p> <input className="border-solid rounded-lg border-4"type="text" onChange={handleSearchChange} />
          <select >
            <option value="">Tüm Türler</option>
            <option value="28">Aksiyon</option>
@@ -97,6 +97,7 @@
          </select>
        </form>
         </div>
+        <h1 className="flex font-bold text-2xl justify-center py-2">Movies</h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 px-4 pt-4 md:px-0 gap-4">
           {filteredMovies.map((movie) => (
             <div className="bg-white p-16 rounded-lg shadow-xl flex flex-col items-center text-center" key={movie.id}>
@@ -116,13 +117,13 @@
     ))}
  
   </div>
-  <h2>Favorites</h2>
+  <h1 className="flex font-bold text-2xl justify-center py-2">Favorites</h1>
         <ul>
           {favorites.map((movie) => (
             <li key={movie.id}>{movie.title}</li>
           ))}
         </ul>
-        <h2>Recently Viewed</h2>
+        <h2 className="flex font-bold text-2xl justify-center py-2">Recently Viewed</h2>
         <ul>
           {recentlyViewed.map((movie) => (
             <li key={movie.id}>{movie.title}</li>
