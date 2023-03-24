@@ -145,7 +145,7 @@ const Movies = () => {
           </select>
         </form>
       </div>
-      <h1 className="flex font-bold text-2xl justify-center py-2">Movies</h1>
+      <h1 className="flex font-bold text-4xl justify-center py-4">Movies</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 pt-4 md:px-4 gap-4">
         {filterMovies.map((movie) => (
           <div
@@ -163,17 +163,17 @@ const Movies = () => {
               IMDB: {movie.vote_average}
             </p>
             <div >
-              <button className="rounded-lg px-2 bg-green-400  hover:bg-green-300" onClick={() => handleAddFavorite(movie)}>
+              <button className="rounded-lg px-3 py-2 bg-green-400  hover:bg-green-300" onClick={() => handleAddFavorite(movie)}>
                 Add to favorites 
               </button>
               <button
-                className="rounded-lg mx-1 px-2 bg-red-400 hover:bg-red-300"
+                className="rounded-lg mx-2 px-2 py-2 bg-red-400 hover:bg-red-300"
                 onClick={() => handleRemoveFavorite(movie)}
               >
                 Remove to favorites
               </button>
               <button
-                className="rounded-lg m-2 px-2  bg-gray-400 hover:bg-gray-300"
+                className="rounded-lg m-2 px-2 py-2  bg-gray-400 hover:bg-gray-300"
                 onClick={() => handleAddToRecentlyViewed(movie)}
               >
                 Add to recently viewed
