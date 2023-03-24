@@ -116,28 +116,27 @@ const Movies = () => {
   return (
     <div className="">
       <div className="">
-        <form className="grid md:grid-cols-2 lg:grid-cols-5 px-4 md:px-20 gap-20">
-          <p className="flex pl-10 justify-center">Search Bar: </p>{" "}
+        <form className="grid md:grid-cols-2 lg:grid-cols-4 px-20 md:px-30 gap-20">
           <input
-            className="border-solid rounded-lg border-4"
+            className="border-solid rounded-md border-4 p-2 pl-2"
             type="text"
             name="title"
-            placeholder="Search"
+            placeholder="Search..."
             onChange={handleFilterChange}
           />
-          <select name="genre" onChange={handleFilterChange}>
+          <select name="genre" className="rounded-md focus:overflow-outline-none border-none px-2" onChange={handleFilterChange}>
             <option value="">Genres</option>
             <option value="28">Action</option>
             <option value="35">Comedy</option>
             <option value="18">Drama</option>
           </select>
-          <select name="year" onChange={handleFilterChange}>
+          <select name="year" className="rounded-md focus:overflow-outline-none border-none px-2" onChange={handleFilterChange}>
             <option value="">Years</option>
             <option value="2023">2023</option>
             <option value="2022">2022</option>
             <option value="2021">2021</option>
           </select>
-          <select name="vote" onChange={handleFilterChange}>
+          <select name="vote" className="rounded-md focus:overflow-outline-none border-none px-2" onChange={handleFilterChange}>
             <option value="">Imdb Vote </option>
             <option value="8">8</option>
             <option value="7">7</option>
