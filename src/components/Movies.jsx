@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {AiFillHeart} from "react-icons/ai" 
-import {AiOutlineHeart} from "react-icons/ai" 
+
 
 
 const Movies = () => {
@@ -123,6 +122,7 @@ const Movies = () => {
             className="border-solid rounded-lg border-4"
             type="text"
             name="title"
+            placeholder="Search"
             onChange={handleFilterChange}
           />
           <select name="genre" onChange={handleFilterChange}>
@@ -150,33 +150,31 @@ const Movies = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 pt-4 md:px-4 gap-4">
         {filterMovies.map((movie) => (
           <div
-            className="bg-white p-16 rounded-lg shadow-xl flex flex-col items-center text-center"
+            className="bg-white p-2 pt-4 rounded-lg shadow-xl flex flex-col items-center text-center"
             key={movie.id}
           >
             <img
-              className="w-[100px] h-[150px] mb-6"
+              className="w-[300px] h-[450px] mb-6 rounded-lg shadow-lg"
               src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`}
               alt={movie.title}
             />
-            <h3 className="font-semibold text-lg text-black">{movie.title}</h3>
+            <h3 className="font-semibold text-2xl text-black">{movie.title}</h3>
             <p className="mt-2 text-lg text-gray-700">Release Date: {movie.release_date}</p>
-            <p className="mt-2 text-sm text-gray-700">
+            <p className="mt-2 text-sm text-gray-700 pb-2">
               IMDB: {movie.vote_average}
             </p>
-            <div>
-              <button className="" onClick={() => handleAddFavorite(movie)}>
-                {/* <AiFillHeart className=""/> */}
+            <div >
+              <button className="rounded-lg px-2 bg-green-400  hover:bg-green-300" onClick={() => handleAddFavorite(movie)}>
                 Add to favorites 
               </button>
               <button
-                className=" px-2"
+                className="rounded-lg mx-1 px-2 bg-red-400 hover:bg-red-300"
                 onClick={() => handleRemoveFavorite(movie)}
               >
-                {/* <AiOutlineHeart/> */}
                 Remove to favorites
               </button>
               <button
-                className="px-2"
+                className="rounded-lg m-2 px-2  bg-gray-400 hover:bg-gray-300"
                 onClick={() => handleAddToRecentlyViewed(movie)}
               >
                 Add to recently viewed
@@ -186,7 +184,7 @@ const Movies = () => {
         ))}
       </div>
       <h1 className="flex font-bold text-2xl justify-center py-2">Favorites</h1>
-      <ul>
+      <ul className=" px-10 list-disc text-lg">
         {favorites.map((movie) => (
           <li key={movie.id}>{movie.title}</li>
         ))}
@@ -194,7 +192,7 @@ const Movies = () => {
       <h2 className="flex font-bold text-2xl justify-center py-2">
         Recently Viewed
       </h2>
-      <ul>
+      <ul className=" px-10 list-disc text-lg">
         {recentlyViewed.map((movie) => (
           <li key={movie.id}>{movie.title}</li>
         ))}
