@@ -639,8 +639,16 @@ html {
   height: 450px;
 }
 
+.h-\[600px\] {
+  height: 600px;
+}
+
 .w-\[300px\] {
   width: 300px;
+}
+
+.w-\[450px\] {
+  width: 450px;
 }
 
 .list-disc {

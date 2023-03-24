@@ -154,7 +154,7 @@ const Movies = () => {
             key={movie.id}
           >
             <img
-              className="w-[300px] h-[450px] mb-6 rounded-lg shadow-lg"
+              className="w-[450px] h-[600px] mb-6 rounded-lg shadow-lg"
               src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`}
               alt={movie.title}
             />
