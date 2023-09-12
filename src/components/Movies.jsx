@@ -23,7 +23,7 @@ const Movies = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        "https://api.themoviedb.org/3/discover/movie?api_key=440811ce73c5e267143f1803ee10a9fa"
+        "https://api.themoviedb.org/3/discover/movie?api_key=2fb22fc1a4a60f76f91f3f2f89b3b9c7"
       );
       console.log(result);
 
